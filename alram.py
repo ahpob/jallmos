@@ -39,7 +39,7 @@ while True:
             elif seat_after == 0:
                 continue
             else:
-                bot.sendMessage(chat_id=id, text=after)
+                bot.sendMessage(chat_id=id, text=after[i])
 
 
         
