@@ -21,21 +21,24 @@ while True:
         res = requests.get(url, headers=headers)
         main_data1 = res.json()['summary']
         initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['realSeatCntlk']),main_data1))
+        seat_before = list(map(lambda x: (x['realSeatCntlk']),main_data1))
 
         time.sleep(0.5)
 
         res = requests.get(url, headers=headers)
         main_data2 = res.json()['summary']
         after = list(map(lambda x: (x['floorNo'],x['areaNo'],x['realSeatCntlk']),main_data2))
+        seat_after = list(map(lambda x: (x['realSeatCntlk']),main_data2))
         
-        changes = []
-        for i in range(len(initial)):
-            seat_before = initial[i][2]
-            seat_after = after[i][2]
-            
-            if seat_before != seat_after:
-                changes.append(after[i])
-        bot.sendMessage(chat_id=id, text=changes)
+        if seat_before == seat_after or seat_after == 0:
+            continue
+
+        else:
+            changes = []
+            for i in range(len(initial)):
+                changes.append(main_data2[i]['floorNo'],main_data2[i]['areaNo'],main_data2[i]['realSeatCntlk'])
+
+            bot.sendMessage(chat_id=id, text=changes)
     
     except Exception as e:
         print("error")                
