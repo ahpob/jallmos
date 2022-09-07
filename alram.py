@@ -23,7 +23,7 @@ while True:
         initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['realSeatCntlk'],x['seatGradeName']),main_data1))
         
 
-        time.sleep(0.2)
+        time.sleep(0.5)
 
         res = requests.get(url, headers=headers)
         main_data2 = res.json()['summary']
@@ -37,7 +37,7 @@ while True:
             third_floor2 = after[i][3]
            
 
-            if seat_before == seat_after and third_floor1 == third_floor2:
+            if seat_before == seat_after:
                 continue
             elif seat_after == 0:
                 continue
