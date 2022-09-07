@@ -21,20 +21,21 @@ while True:
         res = requests.get(url, headers=headers)
         main_data1 = res.json()['summary']
         initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['realSeatCntlk'],x['seatGradeName']),main_data1))
+        third_floora = list(map(lambda x: (x['seatGradeName']),main_data1))
         
-
-        time.sleep(0.5)
+        time.sleep(0.1)
 
         res = requests.get(url, headers=headers)
         main_data2 = res.json()['summary']
         after = list(map(lambda x: (x['floorNo'],x['areaNo'],x['realSeatCntlk'],x['seatGradeName']),main_data2))
+        third_floorb = list(map(lambda x: (x['seatGradeName']),main_data2))
         
-
+            
         for i in range(len(main_data2)):
             seat_before = initial[i][2]
             seat_after = after[i][2]
-            third_floor1 = initial[i][3]
-            third_floor2 = after[i][3]
+            third_floor1 = third_floora[i]
+            third_floor2 = third_floorb[i]
            
 
             if seat_before == seat_after and third_floor1 == third_floor2:
