@@ -14,7 +14,6 @@ res = requests.get(url, headers=headers)
 main_data = res.json()['summary']
 
 initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['realSeatCntlk']),main_data))
-floorNo = main_data['floorNo']
 
 while True:
     
