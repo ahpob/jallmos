@@ -5,7 +5,7 @@ token = os.environ['TELEGRAM_TOKEN']
 id = os.environ['TELEGRAM_ID']
  
 bot = telegram.Bot(token)
-url = 'https://ticket.melon.com/reservation/popup/tktapi/product/block/summary.json?v=1&prodId=207212&pocCode=SC0002&scheduleNo=100004&seatGradeNo=&corpCodeNo='
+url = 'https://ticket.melon.com/reservation/popup/tktapi/product/block/summary.json?v=1&prodId=207126&pocCode=SC0002&scheduleNo=100001&seatGradeNo=&corpCodeNo='
 headers = {
             'Referer': 'ticket.melon.com',
             'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70'
@@ -23,7 +23,7 @@ while True:
         initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['realSeatCntlk'],x['seatGradeName']),main_data1))
         
 
-        time.sleep(1.5)
+        time.sleep(0.3)
 
         res = requests.get(url, headers=headers)
         main_data2 = res.json()['summary']
@@ -33,11 +33,11 @@ while True:
         for i in range(len(main_data2)):
             seat_before = initial[i][2]
             seat_after = after[i][2]
-            third_floor1 = before[i][3]
+            third_floor1 = initial[i][3]
             third_floor2 = after[i][3]
            
 
-            if seat_before == seat_after:
+            if seat_before == seat_after and third_floor1 == third_floor2:
                 continue
             elif seat_after == 0:
                 continue
