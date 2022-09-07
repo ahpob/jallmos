@@ -23,7 +23,7 @@ while True:
         initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['realSeatCntlk'],x['seatGradeName']),main_data1))
         third_floora = list(map(lambda x: (x['seatGradeName']),main_data1))
         
-        time.sleep(0.1)
+        time.sleep(0.5)
 
         res = requests.get(url, headers=headers)
         main_data2 = res.json()['summary']
