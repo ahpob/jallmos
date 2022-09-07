@@ -33,8 +33,11 @@ while True:
         for i in range(len(main_data2)):
             seat_before = initial[i][2]
             seat_after = after[i][2]
+            third_floor1 = before[i][3]
+            third_floor2 = after[i][3]
+           
 
-            if seat_before == seat_after:
+            if seat_before == seat_after and third_floor1 == third_floor2:
                 continue
             elif seat_after == 0:
                 continue
