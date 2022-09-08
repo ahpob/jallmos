@@ -47,7 +47,7 @@ while True:
             elif seat_after == 0:
                 continue
             else:
-                webhook.send(before[i)
+                webhook.send(before[i])
              
              
              
