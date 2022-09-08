@@ -1,5 +1,5 @@
 import requests,os
-import json,telegram,schedule,time
+import json,schedule,time
 from discord import SyncWebhook
 
 # token = os.environ['TELEGRAM_TOKEN']
