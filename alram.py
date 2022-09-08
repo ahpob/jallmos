@@ -42,7 +42,7 @@ while True:
             third_floor2 = third_floorb[i]
            
  
-            if seat_after > 0:
+            if seat_before >0 or seat_after > 0:
                 webhook.send(after[i])   
             elif seat_after == 0:
                 continue
