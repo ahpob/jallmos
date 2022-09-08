@@ -1,10 +1,14 @@
 import requests,os
 import json,telegram,schedule,time
+from discord import SyncWebhook
 
-token = os.environ['TELEGRAM_TOKEN']
-id = os.environ['TELEGRAM_ID']
+# token = os.environ['TELEGRAM_TOKEN']
+# id = os.environ['TELEGRAM_ID']
  
-bot = telegram.Bot(token)
+# bot = telegram.Bot(token)
+discord_url = os.environ['Discord_Url']
+webhook = SyncWebhook.from_url(discord_url)
+
 url = 'https://ticket.melon.com/reservation/popup/tktapi/product/block/summary.json?v=1&prodId=207126&pocCode=SC0002&scheduleNo=100001&seatGradeNo=&corpCodeNo='
 headers = {
             'Referer': 'ticket.melon.com',
@@ -43,7 +47,12 @@ while True:
             elif seat_after == 0:
                 continue
             else:
-                bot.sendMessage(chat_id=id, text=after[i])
+                webhook.send(before[i)
+             
+             
+             
+#                 bot.sendMessage(chat_id=id, text=after[i])
+              
 
 
         
