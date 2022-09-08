@@ -41,11 +41,13 @@ while True:
             third_floor1 = third_floora[i]
             third_floor2 = third_floorb[i]
            
-
-            if seat_before == seat_after and third_floor1 == third_floor2:
-                continue
+ 
+            if seat_after > 0:
+                webhook.send(after[i])   
             elif seat_after == 0:
                 continue
+            elif seat_before == seat_after and third_floor1 == third_floor2:
+                continue           
             else:
                 webhook.send(after[i])
              
