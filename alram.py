@@ -14,10 +14,10 @@ headers = {
             'Referer': 'ticket.melon.com',
             'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70'
 }
-res = requests.get(url, headers=headers)
-main_data = res.json()['summary']
+# res = requests.get(url, headers=headers)
+# main_data = res.json()['summary']
 
-initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['realSeatCntlk']),main_data))
+# initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['realSeatCntlk']),main_data))
 
 while True:
     
@@ -27,7 +27,7 @@ while True:
         initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['realSeatCntlk'],x['seatGradeName']),main_data1))
         third_floora = list(map(lambda x: (x['seatGradeName']),main_data1))
         
-        time.sleep(0.4)
+        time.sleep(0.3)
 
         res = requests.get(url, headers=headers)
         main_data2 = res.json()['summary']
