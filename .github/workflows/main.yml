@@ -26,12 +26,13 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install python-telegram-bot requests schedule
+        pip install discord requests schedule
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     
     - name: run
       run: |
         python alram.py 
       env:
+          Discord_Url: ${{ secrets.Discord_Url }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_ID : ${{ secrets.TELEGRAM_ID }} 
