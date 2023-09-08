@@ -25,31 +25,16 @@ while True:
         res = requests.get(url, headers=headers)
         main_data1 = res.json()['summary']
         initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['lockSeatCntlk'],x['seatGradeName']),main_data1))
-        third_floora = list(map(lambda x: (x['seatGradeName']),main_data1))
         
-        time.sleep(0.4)
-
-        res = requests.get(url, headers=headers)
-        main_data2 = res.json()['summary']
-        after = list(map(lambda x: (x['floorNo'],x['areaNo'],x['lockSeatCntlk'],x['seatGradeName']),main_data2))
-        third_floorb = list(map(lambda x: (x['seatGradeName']),main_data2))
         
             
-        for i in range(len(main_data2)):
+        for i in range(len(main_data1)):
             seat_before = initial[i][2]
-            seat_after = after[i][2]
-            third_floor1 = third_floora[i]
-            third_floor2 = third_floorb[i]
-           
+                      
  
-            if seat_before >0 or seat_after > 0:
-                webhook.send(after[i])   
-            elif seat_after == 0:
-                continue
-            elif seat_before == seat_after and third_floor1 == third_floor2:
-                continue           
-            else:
-                webhook.send(after[i])
+            if seat_before >0:
+                webhook.send(initial[i])   
+           
              
              
              
