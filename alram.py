@@ -24,7 +24,7 @@ while True:
     try:
         res = requests.get(url, headers=headers)
         main_data1 = res.json()['summary']
-        initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['realSeatCntlk'],x['seatGradeName']),main_data1))
+        initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['lockSeatCntlk'],x['seatGradeName']),main_data1))
         
         
             
