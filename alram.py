@@ -37,7 +37,7 @@ while True:
  
             if lock >0 or real >0:
              current_time = datetime.datetime.now().strftime("%H:%M:%S")
-             webhook.send(f"{current_time} - {after[i]}")
+             webhook.send(f"{current_time} - {initial[i]}")
          #       webhook.send(initial[i])   
            
              
