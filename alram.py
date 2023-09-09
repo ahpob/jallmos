@@ -1,5 +1,6 @@
 import requests,os
 import json,schedule,time
+import datetime
 from discord import SyncWebhook
 
 # token = os.environ['TELEGRAM_TOKEN']
@@ -31,9 +32,16 @@ while True:
         for i in range(len(main_data1)):
             lock = initial[i][2]
             real = initial[i][3]
+         
+         
  
             if lock >0 or real >0:
-                webhook.send(initial[i])   
+             # 현재 시간을 시분초 형식으로 얻음
+current_time = datetime.datetime.now().strftime("%H:%M:%S")
+
+# webhook.send() 함수 호출 시 시간 정보를 문자열에 포함하여 보냄
+webhook.send(f"{current_time} - {after[i]}")
+         #       webhook.send(initial[i])   
            
              
              
