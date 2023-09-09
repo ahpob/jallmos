@@ -36,8 +36,10 @@ while True:
          
  
             if lock >0 or real >0:
-             current_time = datetime.datetime.now().strftime("%H:%M:%S")
-             webhook.send(f"{current_time} - {initial[i]}")
+             current_time = datetime.datetime.now()
+             adjusted_time = current_time + datetime.timedelta(hours=9)
+             formatted_time = adjusted_time.strftime("%H:%M:%S")
+             webhook.send(f"{formatted_time} - {initial[i]}")
          #       webhook.send(initial[i])   
            
              
