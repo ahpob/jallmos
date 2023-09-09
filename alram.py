@@ -43,13 +43,8 @@ while True:
          #       webhook.send(initial[i])   
            
              
-             
-             
-#                 bot.sendMessage(chat_id=id, text=after[i])
-              
-
-
-        
+#  bot.sendMessage(chat_id=id, text=after[i])
+           
         # if seat_before == seat_after or seat_after == 0:
         #     continue
 
@@ -59,6 +54,7 @@ while True:
         #         changes.append(main_data2[i]['floorNo'],main_data2[i]['areaNo'],main_data2[i]['realSeatCntlk'])
 
         #     bot.sendMessage(chat_id=id, text=changes)
-    
+        time.sleep(0.2)
+     
     except Exception as e:
         print("error")                
