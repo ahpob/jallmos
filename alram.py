@@ -36,11 +36,8 @@ while True:
          
  
             if lock >0 or real >0:
-             # 현재 시간을 시분초 형식으로 얻음
-current_time = datetime.datetime.now().strftime("%H:%M:%S")
-
-# webhook.send() 함수 호출 시 시간 정보를 문자열에 포함하여 보냄
-webhook.send(f"{current_time} - {after[i]}")
+             current_time = datetime.datetime.now().strftime("%H:%M:%S")
+             webhook.send(f"{current_time} - {after[i]}")
          #       webhook.send(initial[i])   
            
              
