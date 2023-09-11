@@ -1,6 +1,5 @@
 import requests,os
 import json,schedule,time
-import datetime
 from discord import SyncWebhook
 
 # token = os.environ['TELEGRAM_TOKEN']
@@ -25,26 +24,44 @@ while True:
     try:
         res = requests.get(url, headers=headers)
         main_data1 = res.json()['summary']
-        initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['lockSeatCntlk'],x['realSeatCntlk']),main_data1))
+        initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['lockSeatCntlk'],x['seatGradeName']),main_data1))
+        third_floora = list(map(lambda x: (x['seatGradeName']),main_data1))
         
+        time.sleep(0.4)
+
+        res = requests.get(url, headers=headers)
+        main_data2 = res.json()['summary']
+        after = list(map(lambda x: (x['floorNo'],x['areaNo'],x['lockSeatCntlk'],x['seatGradeName']),main_data2))
+        third_floorb = list(map(lambda x: (x['seatGradeName']),main_data2))
         
             
-        for i in range(len(main_data1)):
-            lock = initial[i][2]
-            real = initial[i][3]
-         
-         
+        for i in range(len(main_data2)):
+            seat_before = initial[i][2]
+            seat_after = after[i][2]
+            third_floor1 = third_floora[i]
+            third_floor2 = third_floorb[i]
+           
  
-            if lock >0 or real >0:
-             current_time = datetime.datetime.now()
-             adjusted_time = current_time + datetime.timedelta(hours=9)
-             formatted_time = adjusted_time.strftime("%H:%M:%S")
-             webhook.send(f"{formatted_time} - {initial[i]}")
-         #       webhook.send(initial[i])   
-           
+            if seat_before >0 or seat_after > 0:
+                current_time = datetime.datetime.now()
+                adjusted_time = current_time + datetime.timedelta(hours=9)
+                formatted_time = adjusted_time.strftime("%H:%M:%S")
+                webhook.send(f"{formatted_time} - {after[i]}")
              
-#  bot.sendMessage(chat_id=id, text=after[i])
-           
+            elif seat_after == 0:
+                continue
+            elif seat_before == seat_after and third_floor1 == third_floor2:
+                continue           
+            else:
+                webhook.send(after[i])
+             
+             
+             
+#                 bot.sendMessage(chat_id=id, text=after[i])
+              
+
+
+        
         # if seat_before == seat_after or seat_after == 0:
         #     continue
 
@@ -54,7 +71,6 @@ while True:
         #         changes.append(main_data2[i]['floorNo'],main_data2[i]['areaNo'],main_data2[i]['realSeatCntlk'])
 
         #     bot.sendMessage(chat_id=id, text=changes)
-        time.sleep(0.2)
-     
+    
     except Exception as e:
         print("error")                
