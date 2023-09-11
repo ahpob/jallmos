@@ -25,32 +25,29 @@ while True:
     try:
         res = requests.get(url, headers=headers)
         main_data1 = res.json()['summary']
-        initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['lockSeatCntlk'],x['seatGradeName']),main_data1))
+        initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['lockSeatCntlk'],x['realSeatCntlk']),main_data1))
        
         time.sleep(0.4)
 
         res = requests.get(url, headers=headers)
         main_data2 = res.json()['summary']
-        after = list(map(lambda x: (x['floorNo'],x['areaNo'],x['lockSeatCntlk'],x['seatGradeName']),main_data2))
+        after = list(map(lambda x: (x['floorNo'],x['areaNo'],x['lockSeatCntlk'],x['realSeatCntlk']),main_data2))
         
             
         for i in range(len(main_data2)):
-            seat_before = initial[i][2]
-            seat_after = after[i][2]
-                              
- 
-            if seat_before >0 or seat_after > 0:
+            lock_before = initial[i][2]
+            lock_after = after[i][2]
+            real_before = initial[i][3]                
+            real_after = after[i][3]
+            if lock_before == lock_after and lock_after > 0 :
                 current_time = datetime.datetime.now()
                 adjusted_time = current_time + datetime.timedelta(hours=9)
                 formatted_time = adjusted_time.strftime("%H:%M:%S")
                 webhook.send(f"{formatted_time} - {after[i]}")
              
-            elif seat_after == 0:
-                continue
-            elif seat_before == seat_after and third_floor1 == third_floor2:
-                continue           
-            else:
-                webhook.send(after[i])
+            elif real_after > 0:
+                webhook.send(f"{formatted_time} - {after[i]}")
+            
              
              
              
