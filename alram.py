@@ -25,13 +25,13 @@ while True:
     try:
         res = requests.get(url, headers=headers)
         main_data1 = res.json()['summary']
-        initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['lockSeatCntlk'],x['realSeatCntlk']),main_data1))
+        initial = list(map(lambda x: (x['seatGradeName'],x['areaNo'],x['lockSeatCntlk'],x['realSeatCntlk']),main_data1))
        
         time.sleep(0.4)
 
         res = requests.get(url, headers=headers)
         main_data2 = res.json()['summary']
-        after = list(map(lambda x: (x['floorNo'],x['areaNo'],x['lockSeatCntlk'],x['realSeatCntlk']),main_data2))
+        after = list(map(lambda x: (x['seatGradeName'],x['areaNo'],x['lockSeatCntlk'],x['realSeatCntlk']),main_data2))
         
             
         for i in range(len(main_data2)):
