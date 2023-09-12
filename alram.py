@@ -23,7 +23,7 @@ res2 = requests.get(url2, headers=headers)
 main_data2 = res2.json()['summary']
 initial2 = list(map(lambda x: (x['areaNo'],x['lockSeatCntlk'],x['realSeatCntlk']),main_data2))
 
-while true:
+while True:
     if initial1 == initial2 :
         continue
     else:
