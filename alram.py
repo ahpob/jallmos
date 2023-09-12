@@ -8,9 +8,6 @@ from discord import SyncWebhook
 discord_url = os.environ['Discord_Url']
 webhook = SyncWebhook.from_url(discord_url)
 
-current_time = datetime.datetime.now()
-adjusted_time = current_time + datetime.timedelta(hours=9)
-formatted_time = adjusted_time.strftime("%H:%M:%S")
 
 url = 'https://ticket.melon.com/reservation/popup/tktapi/product/block/summary.json?v=1&prodId=208654&pocCode=SC0002&scheduleNo=100001&seatGradeNo=&corpCodeNo='
 
@@ -30,6 +27,9 @@ while True:
             real = initial[i][3]
 
             if lock > 0 or real > 0:
+                current_time = datetime.datetime.now()
+                adjusted_time = current_time + datetime.timedelta(hours=9)
+                formatted_time = adjusted_time.strftime("%H:%M:%S")
                 webhook.send(f"{formatted_time} - {initial[i]}")
 
         time.sleep(0.4)
