@@ -31,7 +31,7 @@ while True:
             lock_after = after[i][2]
             real_before = initial[i][3]                
             real_after = after[i][3]
-            if lock_before == lock_after and lock_before > 0 :
+            if lock_before > 0 and lock_before == lock_after :
                 current_time = datetime.datetime.now()
                 adjusted_time = current_time + datetime.timedelta(hours=9)
                 formatted_time = adjusted_time.strftime("%H:%M:%S")
