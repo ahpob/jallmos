@@ -32,9 +32,6 @@ while True:
                     
              webhook.send(f"{formatted_time} - {initial[i]}")          
 
-
-
-             
-     time.sleep(0.3)
+         time.sleep(0.3)
     except Exception as e:
         print("error")                
