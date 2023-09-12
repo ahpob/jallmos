@@ -20,21 +20,21 @@ while True:
     try:
         res = requests.get(url, headers=headers)
         main_data1 = res.json()['summary']
-        initial = list(map(lambda x: (x['floorNo'],x['areaNo'],x['lockSeatCntlk'],x['realSeatCntlk']),main_data1))
+        initial = list(map(lambda x: (x['seatGradeName'],x['areaNo'],x['lockSeatCntlk'],x['realSeatCntlk']),main_data1))
         
         
             
         for i in range(len(main_data1)):
             lock = initial[i][2]
-            real = initial[i][3]
-         
-         
+            real = initial[i][3]         
  
             if lock >0 or real >0:
-             
+                    
              webhook.send(f"{formatted_time} - {initial[i]}")          
+
+
+
              
-        time.sleep(0.2)
-     
+     time.sleep(0.3)
     except Exception as e:
         print("error")                
