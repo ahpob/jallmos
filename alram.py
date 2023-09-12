@@ -32,7 +32,7 @@ while True:
             if lock >0 or real >0:
              
              webhook.send(f"{formatted_time} - {initial[i]}")
-     )
+     
         time.sleep(0.4)
      
     except Exception as e:
