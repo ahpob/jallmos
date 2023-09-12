@@ -26,6 +26,6 @@ initial2 = list(map(lambda x: (x['areaNo'],x['lockSeatCntlk'],x['realSeatCntlk']
 while true:
     if initial1 == initial2 :
         continue
-    else
+    else:
         after = list(set(initial2)-set(initial1))
         webhook.send(f"{formatted_time} - {after}")
