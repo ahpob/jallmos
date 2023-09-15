@@ -26,7 +26,7 @@ while True:
             lock2 = initial2[i][2]
             real2 = initial2[i][3]
 
-            if lock > 0 or real > 0:
+            if lock2 > 0 or real2 > 0:
                 current_time = datetime.datetime.now()
                 adjusted_time = current_time + datetime.timedelta(hours=9)
                 formatted_time = adjusted_time.strftime("%H:%M:%S")
