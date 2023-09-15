@@ -18,19 +18,19 @@ headers = {
 
 while True:
     try:
-        res = requests.get(url, headers=headers)
-        main_data1 = res.json()['summary']
-        initial = list(map(lambda x: (x['seatGradeName'], x['areaNo'], x['lockSeatCntlk'], x['realSeatCntlk']), main_data1))
+        res1 = requests.get(url, headers=headers)
+        data1 = res1.json()['summary']
+        initial2 = list(map(lambda x: (x['seatGradeName'], x['areaNo'], x['lockSeatCntlk'], x['realSeatCntlk']), data1))
 
-        for i in range(len(main_data1)):
-            lock = initial[i][2]
-            real = initial[i][3]
+        for i in range(len(data1)):
+            lock2 = initial2[i][2]
+            real2 = initial2[i][3]
 
             if lock > 0 or real > 0:
                 current_time = datetime.datetime.now()
                 adjusted_time = current_time + datetime.timedelta(hours=9)
                 formatted_time = adjusted_time.strftime("%H:%M:%S")
-                webhook.send(f"{formatted_time} - {initial[i]}")
+                webhook.send(f"{formatted_time} - {initial2[i]}")
 
         time.sleep(0.4)
 
