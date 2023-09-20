@@ -32,7 +32,6 @@ while True:
                 formatted_time = adjusted_time.strftime("%H:%M:%S")
                 webhook.send(f"{formatted_time} - {initial2[i]}")
 
-        time.sleep(0.4)
 
     except Exception as e:
         print("error")
