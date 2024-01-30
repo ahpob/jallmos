@@ -9,7 +9,7 @@ discord_url = os.environ['Discord_Url']
 webhook = SyncWebhook.from_url(discord_url)
 
 
-url = 'https://ticket.melon.com/reservation/popup/tktapi/product/block/summary.json?v=1&prodId=208654&pocCode=SC0002&scheduleNo=100002&seatGradeNo=&corpCodeNo='
+url = 'https://ticket.melon.com/reservation/popup/tktapi/product/block/summary.json?v=1&prodId=209371&pocCode=SC0002&scheduleNo=100001&seatGradeNo=&corpCodeNo='
 
 headers = {
     'Referer': 'ticket.melon.com',
